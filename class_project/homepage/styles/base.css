@@ -1,0 +1,14 @@
+#maintenance {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    font-weight: bold;
+}
+
+#alert_message {
+    position: fixed;
+    top: 76px;
+    right: 10px;
+    z-index: 1;
+    font-weight: bold;
+}

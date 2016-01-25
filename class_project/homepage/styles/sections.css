@@ -1,0 +1,14 @@
+.left_divider {
+    background-color: rgba(0,0,128, 0.8);
+    color: white;
+}
+
+.center_divider {
+    background-color: darkslategrey;
+    color: white;
+}
+
+.right_divider {
+    background-color: purple;
+    color: white;
+}

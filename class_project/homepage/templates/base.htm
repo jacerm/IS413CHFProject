@@ -1,0 +1,68 @@
+## this is the skeleton of all pages on in this app - it defines the basic html tags
+
+## set up a StaticRenderer object to enable the CSS/JS automatic inclusion magic.
+<%! from django_mako_plus.controller import static_files %>
+<%  static_renderer = static_files.StaticRenderer(self) %>
+
+<!DOCTYPE html>
+<html>
+  <meta charset="UTF-8">
+  <head>
+    <%block name="title">
+
+    </%block>
+
+    ## add any site-wide scripts or CSS here; for example, jquery:
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
+    <link href="${ STATIC_URL }homepage/media/bootstrap3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="${ STATIC_URL }homepage/media/gengar.jpg" type="image/x-icon">
+  
+    ## render the css with the same name as this page
+    ${ static_renderer.get_template_css(request, context)  }
+  
+  </head>
+  <body>
+    <header>
+        <div id="alert_message">
+            <div class="alert alert-danger">
+                Alert Message
+            </div>
+        </div>
+        <%block name="nav">
+            Nav info goes here
+        </%block>
+        <div id="maintenance" class="text-center">
+            Maintenance will be here!
+        </div>
+    </header>
+
+    <%block name="content_head">
+      Site content goes here in sub-templates.
+    </%block>
+
+    <div class="container">
+        <%block name="left_aside">
+            Left aside content goes here
+        </%block>
+        <%block name="main">
+            Main content goes here
+        </%block>
+        <%block name="right_aside">
+            Right aside content goes here
+        </%block>
+    </div>
+
+    <footer class="container" style="margin-top: 15px;">
+        <% 
+            import datetime
+            current_year =  datetime.date.today().year 
+        %>
+        <hr/>
+        Copyright &copy; ${current_year} - Colonial Heritage Foundation
+    </footer>
+    ## render the JS with the same name as this page
+    ${ static_renderer.get_template_js(request, context)  }
+  </body>
+</html>

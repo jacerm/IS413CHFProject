@@ -1,0 +1,53 @@
+<%inherit file="app_base.htm" />
+
+<%block name="nav_links">
+    <li id="index_tab"><a href="/homepage/index">Home</a></li>
+    <li id="about_tab"><a href="/homepage/about">About</a></li>
+    <li id="contact_tab"><a href="/homepage/contact">Contact</a></li>
+    <li id="terms_tab"><a href="/homepage/terms">Terms</a></li>
+    <li id="faq_tab"><a href="/homepage/faq">FAQ</a></li>
+    <li id="sections_tab"><a href="/homepage/sections">Sections</a></li>
+</%block>
+
+<%block name="content_head">
+    <div class="container text-center">
+      <h3>Contact Page</h3>
+    </div>
+</%block>
+
+<%block name="left_aside">
+</%block>
+
+<%block name="main">
+    <div class="col-sm-12 center_divider">
+        <h3>Add Your Suggestions</h3>
+        <form role="form" method="POST">
+            <div class="form-group">
+                <label for="email">Email address:</label>
+                <input type="email" name="youremail" class="form-control" placeholder="Enter Email" id="email" style="width: 50%;">
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" name="yourpassword" class="form-control" placeholder="Enter Password" id="pwd" style="width: 50%;">
+            </div>
+            <div class="form-group">
+                <label for="msg">Message:</label>
+                <textarea type="text" name="yourmessage" class="form-control" placeholder="Enter Message" id="pwd" style="width: 50%;"></textarea>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        %if email:
+        <h3>Your Post Submission</h3>
+        <p>${ email }</p>
+        %endif
+        %if password:
+        <p>${ password }</p>
+        %endif
+        %if message:
+        <p>${ message }</p>
+        %endif
+    </div>
+</%block>
+
+<%block name="right_aside">
+</%block>
