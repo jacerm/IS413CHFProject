@@ -1,0 +1,30 @@
+<%inherit file="/homepage/templates/app_base.htm" />
+
+<%block name="content_head">
+    <div class="container text-center">
+      <h3>Manager Edit Page</h3>
+    </div>
+</%block>
+
+<%block name="left_aside">
+</%block>
+
+<%block name="main">
+    <a href="/manager/users.passchange/${ user.id }" class="btn btn-primary">Update Password</a>
+    <form method="POST" style="margin-left: 150px;">
+        <table>
+            ${form}
+        </table>
+        <input class="btn btn-primary" type="submit" value="Update" style="margin-top: 20px;">
+    </form>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker2').datetimepicker({
+                format: "MM/DD/YYYY"
+            });
+        });
+    </script>
+</%block>
+
+<%block name="right_aside">
+</%block>

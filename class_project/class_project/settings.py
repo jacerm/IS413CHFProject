@@ -33,12 +33,17 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'polymorphic',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_mako_plus.controller',
-    'homepage'
+    'homepage',
+    'account',
+    'manager',
+    'catalog',
+    'event',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -77,10 +82,16 @@ WSGI_APPLICATION = 'class_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
+AUTH_USER_MODEL = 'account.User'
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'CHF',
+        'USER': 'postgres',
+        'PASSWORD': 'jace164127',
+        'HOST': 'localhost',
+        'PORT': '9999',
     }
 }
 

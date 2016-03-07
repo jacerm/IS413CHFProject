@@ -1,0 +1,58 @@
+<%! from catalog import models as cmod %>
+<%inherit file="/homepage/templates/app_base.htm" />
+
+<%block name="content_head">
+    <div class="container text-center">
+      <h3>Products</h3>
+    </div>
+</%block>
+
+<%block name="left_aside">
+</%block>
+
+<%block name="main">
+<a href="/catalog/products.create/" class="btn btn-primary" style="margin-bottom: 15px;">Create New Product</a>
+   <table class="table table-striped">
+       <tr>
+           <th>Name</th>
+           <th>Type</th>
+           <th>Image</th>
+           <th>Quantity</th>
+           <th>Actions</th>
+       </tr>
+       %for product in products:
+       <tr>
+           <td>${product.name}</td>
+           <td>${product.__class__.__name__}</td>
+           <td>${product.image}</td>
+           <td>
+               %if isinstance(product, cmod.BulkProduct):
+                <span id="quantity_val">14</span> <span data-id=${product.id} href="/catalog/products.getQuantity/${product.id}" class="glyphicon glyphicon-refresh quantity_btn"></span>
+               %endif
+           </td>
+           <td><a href="/catalog/products.edit/${product.id}/">Edit</a> | <a class="products_delete_link" href="/catalog/products.delete/${product.id}/">Delete</a></td>
+       </tr>
+       %endfor
+   </table>
+   
+<div class="modal fade" id="products_delete_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        Delete This Product?
+      </div>
+      <div class="modal-footer">
+        <a id="products_confirm_delete_modal" href="" class="btn btn-danger">Delete</a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</%block>
+
+<%block name="right_aside">
+</%block>

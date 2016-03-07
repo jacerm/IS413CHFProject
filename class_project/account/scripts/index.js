@@ -1,0 +1,3 @@
+$(function() {
+  $("#accountTab").addClass("active");
+});

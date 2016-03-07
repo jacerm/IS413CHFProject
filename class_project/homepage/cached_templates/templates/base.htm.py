@@ -5,13 +5,13 @@ STOP_RENDERING = runtime.STOP_RENDERING
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 10
-_modified_time = 1453486466.9591286
+_modified_time = 1456020643.8763967
 _enable_loop = True
 _template_filename = 'C:/source/class/IS413/class_project/class_project/homepage/templates/base.htm'
 _template_uri = 'base.htm'
 _source_encoding = 'utf-8'
 import os, os.path, re, json
-_exports = ['content_head', 'main', 'title', 'right_aside', 'nav', 'left_aside']
+_exports = ['main', 'nav', 'right_aside', 'title', 'left_aside', 'content_head']
 
 
 from django_mako_plus.controller import static_files 
@@ -20,21 +20,21 @@ def render_body(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
-        def content_head():
-            return render_content_head(context._locals(__M_locals))
-        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
+        request = context.get('request', UNDEFINED)
+        self = context.get('self', UNDEFINED)
         def title():
             return render_title(context._locals(__M_locals))
-        def nav():
-            return render_nav(context._locals(__M_locals))
         def right_aside():
             return render_right_aside(context._locals(__M_locals))
-        self = context.get('self', UNDEFINED)
-        request = context.get('request', UNDEFINED)
-        def main():
-            return render_main(context._locals(__M_locals))
         def left_aside():
             return render_left_aside(context._locals(__M_locals))
+        def content_head():
+            return render_content_head(context._locals(__M_locals))
+        def main():
+            return render_main(context._locals(__M_locals))
+        def nav():
+            return render_nav(context._locals(__M_locals))
+        STATIC_URL = context.get('STATIC_URL', UNDEFINED)
         __M_writer = context.writer()
         __M_writer('\r\n')
         __M_writer('\r\n')
@@ -48,19 +48,27 @@ def render_body(context,**pageargs):
         
 
         __M_writer('\r\n\r\n')
-        __M_writer('    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>\r\n    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>\r\n    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>\r\n    <link href="')
+        __M_writer('    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>\r\n    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>\r\n    <script src="')
         __M_writer(str( STATIC_URL ))
-        __M_writer('homepage/media/bootstrap3/css/bootstrap.min.css" rel="stylesheet">\r\n    <link rel="icon" href="')
+        __M_writer('homepage/media/loadmodal.js"></script>\r\n    <script src="')
+        __M_writer(str( STATIC_URL ))
+        __M_writer('homepage/media/ajaxform.js"></script>\r\n    <script src="')
+        __M_writer(str( STATIC_URL ))
+        __M_writer('homepage/media/moment.js"></script>\r\n    <script src="')
+        __M_writer(str( STATIC_URL ))
+        __M_writer('homepage/media/datetimepicker.js"></script>\r\n    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">\r\n    <link href="')
+        __M_writer(str( STATIC_URL ))
+        __M_writer('homepage/media/datetimepicker.css" rel="stylesheet">\r\n    <link rel="icon" href="')
         __M_writer(str( STATIC_URL ))
         __M_writer('homepage/media/gengar.jpg" type="image/x-icon">\r\n  \r\n')
         __M_writer('    ')
         __M_writer(str( static_renderer.get_template_css(request, context)  ))
-        __M_writer('\r\n  \r\n  </head>\r\n  <body>\r\n    <header>\r\n        <div id="alert_message">\r\n            <div class="alert alert-danger">\r\n                Alert Message\r\n            </div>\r\n        </div>\r\n        ')
+        __M_writer('\r\n  \r\n  </head>\r\n  <body>\r\n    <header>\r\n        ')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'nav'):
             context['self'].nav(**pageargs)
         
 
-        __M_writer('\r\n        <div id="maintenance" class="text-center">\r\n            Maintenance will be here!\r\n        </div>\r\n    </header>\r\n\r\n    ')
+        __M_writer('\r\n        <div id="maintenance" class="text-center">\r\n        </div>\r\n    </header>\r\n\r\n    ')
         if 'parent' not in context._data or not hasattr(context._data['parent'], 'content_head'):
             context['self'].content_head(**pageargs)
         
@@ -99,18 +107,6 @@ def render_body(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
-def render_content_head(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def content_head():
-            return render_content_head(context)
-        __M_writer = context.writer()
-        __M_writer('\r\n      Site content goes here in sub-templates.\r\n    ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
 def render_main(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
@@ -118,30 +114,6 @@ def render_main(context,**pageargs):
             return render_main(context)
         __M_writer = context.writer()
         __M_writer('\r\n            Main content goes here\r\n        ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_title(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def title():
-            return render_title(context)
-        __M_writer = context.writer()
-        __M_writer('\r\n\r\n    ')
-        return ''
-    finally:
-        context.caller_stack._pop_frame()
-
-
-def render_right_aside(context,**pageargs):
-    __M_caller = context.caller_stack._push_frame()
-    try:
-        def right_aside():
-            return render_right_aside(context)
-        __M_writer = context.writer()
-        __M_writer('\r\n            Right aside content goes here\r\n        ')
         return ''
     finally:
         context.caller_stack._pop_frame()
@@ -159,6 +131,30 @@ def render_nav(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
+def render_right_aside(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def right_aside():
+            return render_right_aside(context)
+        __M_writer = context.writer()
+        __M_writer('\r\n            Right aside content goes here\r\n        ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
+def render_title(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def title():
+            return render_title(context)
+        __M_writer = context.writer()
+        __M_writer('\r\n\r\n    ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
 def render_left_aside(context,**pageargs):
     __M_caller = context.caller_stack._push_frame()
     try:
@@ -171,8 +167,20 @@ def render_left_aside(context,**pageargs):
         context.caller_stack._pop_frame()
 
 
+def render_content_head(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
+    try:
+        def content_head():
+            return render_content_head(context)
+        __M_writer = context.writer()
+        __M_writer('\r\n      Site content goes here in sub-templates.\r\n    ')
+        return ''
+    finally:
+        context.caller_stack._pop_frame()
+
+
 """
 __M_BEGIN_METADATA
-{"uri": "base.htm", "filename": "C:/source/class/IS413/class_project/class_project/homepage/templates/base.htm", "line_map": {"19": 0, "132": 11, "68": 43, "73": 48, "138": 52, "78": 51, "144": 52, "17": 4, "156": 33, "83": 54, "84": 58, "150": 33, "120": 49, "91": 61, "92": 63, "93": 63, "94": 66, "95": 66, "96": 66, "162": 46, "114": 49, "102": 41, "39": 2, "40": 4, "41": 5, "108": 41, "45": 5, "174": 168, "168": 46, "50": 13, "51": 16, "52": 19, "53": 19, "54": 20, "55": 20, "56": 23, "57": 23, "58": 23, "126": 11, "63": 35}, "source_encoding": "utf-8"}
+{"filename": "C:/source/class/IS413/class_project/class_project/homepage/templates/base.htm", "uri": "base.htm", "line_map": {"128": 32, "134": 50, "140": 50, "17": 4, "146": 11, "19": 0, "152": 11, "158": 44, "164": 44, "39": 2, "40": 4, "41": 5, "170": 39, "45": 5, "176": 39, "50": 13, "51": 16, "52": 18, "53": 18, "54": 19, "55": 19, "56": 20, "57": 20, "58": 21, "59": 21, "60": 23, "61": 23, "62": 24, "63": 24, "64": 27, "65": 27, "66": 27, "182": 176, "71": 34, "76": 41, "81": 46, "86": 49, "91": 52, "92": 56, "99": 59, "100": 61, "101": 61, "102": 64, "103": 64, "104": 64, "110": 47, "116": 47, "122": 32}, "source_encoding": "utf-8"}
 __M_END_METADATA
 """

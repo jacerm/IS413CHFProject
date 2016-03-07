@@ -13,10 +13,14 @@
     </%block>
 
     ## add any site-wide scripts or CSS here; for example, jquery:
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
-    <link href="${ STATIC_URL }homepage/media/bootstrap3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="${ STATIC_URL }homepage/media/loadmodal.js"></script>
+    <script src="${ STATIC_URL }homepage/media/ajaxform.js"></script>
+    <script src="${ STATIC_URL }homepage/media/moment.js"></script>
+    <script src="${ STATIC_URL }homepage/media/datetimepicker.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${ STATIC_URL }homepage/media/datetimepicker.css" rel="stylesheet">
     <link rel="icon" href="${ STATIC_URL }homepage/media/gengar.jpg" type="image/x-icon">
   
     ## render the css with the same name as this page
@@ -25,16 +29,10 @@
   </head>
   <body>
     <header>
-        <div id="alert_message">
-            <div class="alert alert-danger">
-                Alert Message
-            </div>
-        </div>
         <%block name="nav">
             Nav info goes here
         </%block>
         <div id="maintenance" class="text-center">
-            Maintenance will be here!
         </div>
     </header>
 

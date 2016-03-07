@@ -1,0 +1,55 @@
+<%inherit file="/homepage/templates/app_base.htm" />
+
+<%block name="content_head">
+    <div class="container text-center">
+      <h3>Venues</h3>
+    </div>
+</%block>
+
+<%block name="left_aside">
+</%block>
+
+<%block name="main">
+<a href="/event/venues.create/" class="btn btn-primary" style="margin-bottom: 15px;">Create New Venue</a>
+   <table class="table table-striped">
+       <tr>
+           <th>Name</th>
+           <th>Address</th>
+           <th>City</th>
+           <th>State</th>
+           <th>Zip</th>
+           <th>Actions</th>
+       </tr>
+       %for venue in venues:
+       <tr>
+           <td>${venue.name}</td>
+           <td>${venue.address}</td>
+           <td>${venue.city}</td>
+           <td>${venue.state}</td>
+           <td>${venue.zip}</td>
+           <td><a href="/event/venues.edit/${venue.id}/">Edit</a> | <a class="venues_delete_link" href="/event/venues.delete/${venue.id}/">Delete</a></td>
+       </tr>
+       %endfor
+   </table>
+   
+<div class="modal fade" id="venues_delete_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        Delete This Venue?
+      </div>
+      <div class="modal-footer">
+        <a id="venues_confirm_delete_modal" href="" class="btn btn-danger">Delete</a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</%block>
+
+<%block name="right_aside">
+</%block>

@@ -1,0 +1,23 @@
+<%inherit file="homepage/templates/app_base.htm" />
+
+<%block name="content_head">
+    <div class="container text-center">
+      <h3>Edit Product Page</h3>
+    </div>
+</%block>
+
+<%block name="left_aside">
+</%block>
+
+<%block name="main">
+    <form method="POST" style="margin-left: 150px;">
+        <h4 id="product_class">${ product.class_name }</h4>
+        <table>
+            ${form}
+        </table>
+        <input class="btn btn-primary" type="submit" value="Update" style="margin-top: 20px;">
+    </form>
+</%block>
+
+<%block name="right_aside">
+</%block>
